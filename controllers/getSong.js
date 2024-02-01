@@ -3,8 +3,9 @@ import getDl from "../libs/getDl.js";
 
 export const getSong = async (req, res) => {
   try {
+    const duration = req.body.duration;
     const name = decodeURIComponent(req.query.name);
-    const ytIdInfo = await getFirstSong(name);
+    const ytIdInfo = await getFirstSong(name, duration);
 
     const ytId = ytIdInfo.songYtId;
     const dlLink = await getDl(ytId);

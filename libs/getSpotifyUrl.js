@@ -6,7 +6,7 @@ const { getData, getPreview, getTracks, getDetails } = SpotifyUrlInfo(fetch);
 const getSpotifyUrl = async (req, res) => {
   const id = req.query.id;
   try {
-    const songInfoFetch = await getPreview(
+    const songInfoFetch = await getDetails(
       `https://open.spotify.com/track/${id}`,
       {
         headers: {

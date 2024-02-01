@@ -1,6 +1,6 @@
 const getDl = async (ytId) => {
   try {
-    const apiUrl = `${process.env.Cobalt_URL}/api/json`;
+    const apiUrl = `http://localhost:9000/api/json`;
     const headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -21,7 +21,6 @@ const getDl = async (ytId) => {
       body: JSON.stringify(requestBody),
     });
     const dlLink = await dlLinkReq.json();
-
     return { dlLink };
   } catch (error) {
     console.log(error);
