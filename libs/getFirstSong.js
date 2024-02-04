@@ -23,7 +23,8 @@ const getFirstSong = async (name, duration) => {
   try {
     console.log(SearchName);
     const shelves = await music.search(SearchName);
-    console.log(shelves);
+    console.log(shelves[2]);
+
     let ytMusicId = null;
     // Iterate through shelves
     for (let shelf of shelves) {
@@ -34,11 +35,54 @@ const getFirstSong = async (name, duration) => {
           if (
             item &&
             item.title &&
-            item.duration > seconds - 7 &&
-            item.duration < seconds + 7
+            item.duration > seconds - 3 &&
+            item.duration < seconds + 3
           ) {
+            console.log("first item🎁🤢🤔", item);
             ytMusicId = item.id;
             break;
+          }
+        }
+      }
+    }
+    if (ytMusicId === null) {
+      const Secondshelve = await music.search(SongName);
+
+      for (let shelf of Secondshelve) {
+        // Check if shelf and shelf.items exist
+        if (shelf && shelf.items) {
+          // Iterate through items in shelf.items
+          for (let item of shelf.items) {
+            if (
+              item &&
+              item.duration > seconds - 10 &&
+              item.duration < seconds + 10
+            ) {
+              console.log("second:✔✔✔", item);
+              ytMusicId = item.id;
+              break;
+            }
+          }
+        }
+      }
+    }
+    if (ytMusicId === null) {
+      const thirdshelve = await music.search(name);
+
+      for (let shelf of thirdshelve) {
+        // Check if shelf and shelf.items exist
+        if (shelf && shelf.items) {
+          // Iterate through items in shelf.items
+          for (let item of shelf.items) {
+            if (
+              item &&
+              item.duration > seconds - 10 &&
+              item.duration < seconds + 10
+            ) {
+              console.log("second:✔✔✔", item);
+              ytMusicId = item.id;
+              break;
+            }
           }
         }
       }
