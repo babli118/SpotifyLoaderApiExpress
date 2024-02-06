@@ -1,6 +1,6 @@
-const getDl = async (ytId) => {
+const getDl = async (ytId, SongName, songAuthor) => {
   try {
-    const apiUrl = `${process.env.Cobalt_URL}/api/json`;
+    const apiUrl = `https://dl01.spotifyloader.com/api/json`;
     const headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -13,6 +13,10 @@ const getDl = async (ytId) => {
       isAudioOnly: true,
       isNoTTWatermark: false,
       filenamePattern: "basic",
+      name: SongName.includes("(")
+        ? SongName.substring(0, SongName.indexOf("(")).trim()
+        : SongName.trim(),
+      author: songAuthor,
     };
 
     const dlLinkReq = await fetch(apiUrl, {

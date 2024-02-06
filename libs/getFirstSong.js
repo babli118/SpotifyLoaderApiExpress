@@ -23,7 +23,6 @@ const getFirstSong = async (name, duration) => {
   try {
     console.log(SearchName);
     const shelves = await music.search(SearchName);
-    console.log(shelves[2]);
 
     let ytMusicId = null;
     // Iterate through shelves
