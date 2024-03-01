@@ -1,8 +1,9 @@
-import { MusicClient } from "youtubei";
+import { MusicClient, Client } from "youtubei";
 
 const getFirstSong = async (name, duration) => {
   const seconds = duration / 1000;
   const music = new MusicClient();
+  const youtube = new Client();
 
   let SongName;
   let SongAuthor;
@@ -85,6 +86,11 @@ const getFirstSong = async (name, duration) => {
           }
         }
       }
+    }
+    if (ytMusicId === null) {
+      const ytVideo = await youtube.findOne(SearchName);
+      console.log(ytVideo.id);
+      ytMusicId = ytVideo.id;
     }
 
     let songYtId = ytMusicId;

@@ -3,9 +3,7 @@ import songRoutes from "./routes/song.js";
 import songDlRoutes from "./routes/songDl.js";
 import playListRoutes from "./routes/playList.js";
 import express from "express";
-import mm from "music-metadata";
-import NodeID3 from "node-id3";
-import fetch from "node-fetch";
+
 import cors from "cors";
 
 const app = express();
@@ -25,7 +23,7 @@ app.use("/songInfo", songRoutes);
 app.use("/playListInfo", playListRoutes);
 app.use("/songDl", songDlRoutes);
 
-const PORT = 3001;
+const PORT = 3002;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
